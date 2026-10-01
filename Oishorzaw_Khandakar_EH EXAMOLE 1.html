@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Oishorzaw Khandakar — Ethical Hacker & Cybersecurity Portfolio">
+<title>Oishorzaw Khandakar | Ethical Hacker</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root{
+ --bg:#07100f; --bg2:#0b1715; --card:rgba(14,30,27,.72);
+ --text:#eefaf5; --muted:#91aaa3; --line:rgba(130,255,205,.13);
+ --mint:#65f6bd; --cyan:#5ce1e6; --purple:#a88cff;
+ --shadow:0 25px 80px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+ background:var(--bg); color:var(--text); font-family:Inter,sans-serif;
+ line-height:1.65; overflow-x:hidden;
+}
+body:before{
+ content:""; position:fixed; inset:0; z-index:-3; pointer-events:none;
+ background:
+ radial-gradient(circle at 15% 15%,rgba(101,246,189,.11),transparent 30%),
+ radial-gradient(circle at 85% 20%,rgba(92,225,230,.08),transparent 25%),
+ radial-gradient(circle at 70% 85%,rgba(168,140,255,.08),transparent 28%);
+}
+body:after{
+ content:""; position:fixed; inset:0; z-index:-2; pointer-events:none; opacity:.04;
+ background-image:linear-gradient(rgba(255,255,255,.5) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.5) 1px,transparent 1px);
+ background-size:56px 56px;
+}
+a{color:inherit;text-decoration:none}
+.container{width:min(1160px,88%);margin:auto}
+
+/* NAV */
+.nav{
+ position:fixed;top:0;left:0;right:0;z-index:100;height:76px;
+ display:flex;align-items:center;justify-content:space-between;
+ border-bottom:1px solid var(--line);background:rgba(7,16,15,.76);
+ backdrop-filter:blur(18px);
+}
+.logo{font:700 15px "JetBrains Mono";letter-spacing:.5px}
+.logo span{color:var(--mint)}
+.navlinks{display:flex;gap:30px}
+.navlinks a{font:12px "JetBrains Mono";color:var(--muted);transition:.25s}
+.navlinks a:hover{color:var(--mint)}
+.nav-cta{
+ border:1px solid rgba(101,246,189,.35);padding:9px 15px;
+ color:var(--mint);font:11px "JetBrains Mono";
+}
+.status{font:10px "JetBrains Mono";color:var(--muted);display:flex;align-items:center;gap:7px}
+.status i{width:7px;height:7px;border-radius:50%;background:var(--mint);box-shadow:0 0 14px var(--mint);animation:pulse 1.5s infinite}
+@keyframes pulse{50%{opacity:.35}}
+
+/* HERO */
+.hero{min-height:100vh;padding:145px 0 90px;display:flex;align-items:center;position:relative}
+.hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:60px;align-items:center}
+.eyebrow{font:600 11px "JetBrains Mono";letter-spacing:2.5px;color:var(--mint);margin-bottom:22px}
+h1{font-size:clamp(48px,7vw,82px);line-height:1.01;letter-spacing:-4px;margin-bottom:25px}
+h1 em{font-style:normal;color:var(--mint)}
+.hero-desc{max-width:680px;color:var(--muted);font-size:17px;line-height:1.85}
+.actions{display:flex;gap:12px;margin-top:30px}
+.btn{padding:12px 18px;border:1px solid var(--line);font:600 11px "JetBrains Mono";transition:.25s}
+.btn.primary{background:var(--mint);color:#06100c;border-color:var(--mint)}
+.btn.primary:hover{box-shadow:0 0 35px rgba(101,246,189,.22);transform:translateY(-2px)}
+.btn.secondary:hover{border-color:var(--mint);color:var(--mint);transform:translateY(-2px)}
+.hero-note{margin-top:25px;color:#68817a;font:10px "JetBrains Mono"}
+
+.profile-orb{
+ width:310px;height:310px;margin:auto;border-radius:50%;position:relative;
+ display:grid;place-items:center;
+ background:radial-gradient(circle,rgba(101,246,189,.12),rgba(101,246,189,.02) 48%,transparent 68%);
+ border:1px solid rgba(101,246,189,.18);
+ box-shadow:0 0 100px rgba(101,246,189,.07);
+ animation:float 5s ease-in-out infinite;
+}
+@keyframes float{50%{transform:translateY(-12px)}}
+.ring{position:absolute;border:1px solid rgba(92,225,230,.22);border-radius:50%}
+.r1{inset:24px;animation:spin 18s linear infinite}.r2{inset:62px;animation:spin 12s linear reverse infinite}.r3{inset:100px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.orb-core{
+ width:118px;height:118px;border-radius:50%;display:grid;place-items:center;
+ border:1px solid rgba(101,246,189,.4);background:#0b211b;
+ box-shadow:0 0 50px rgba(101,246,189,.13);
+ font:700 24px "JetBrains Mono";color:var(--mint)
+}
+.orb-dot{position:absolute;width:8px;height:8px;background:var(--mint);border-radius:50%;box-shadow:0 0 20px var(--mint)}
+.d1{top:18px;left:50%}.d2{right:28px;bottom:80px}.d3{left:34px;bottom:90px}
+
+.terminal{
+ margin-top:30px;border:1px solid var(--line);background:#040908;
+ width:min(650px,100%);box-shadow:var(--shadow);
+}
+.term-top{height:34px;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 12px;gap:6px}
+.term-top i{width:7px;height:7px;border-radius:50%;background:#33453f}
+.term-title{font:10px "JetBrains Mono";color:#647b74;margin-left:7px}
+.term-body{padding:17px;font:12px/2 "JetBrains Mono"}
+.green{color:var(--mint)}.muted{color:#71847e}
+.cursor{display:inline-block;border-right:2px solid var(--mint);animation:blink .7s infinite}
+@keyframes blink{50%{border-color:transparent}}
+
+/* SECTIONS */
+section{padding:110px 0;border-top:1px solid var(--line)}
+.section-label{font:600 10px "JetBrains Mono";letter-spacing:2px;color:var(--mint);margin-bottom:22px}
+h2{font-size:clamp(36px,5vw,58px);letter-spacing:-2.5px;line-height:1.08;margin-bottom:30px}
+h2 span{color:var(--mint)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:75px}
+.about-text{color:var(--muted);font-size:15px}
+.about-text strong{color:var(--text)}
+.about-text p{margin-bottom:16px}
+.highlight{font-size:20px;line-height:1.6;color:var(--text)!important}
+
+.skills-section{background:rgba(8,20,18,.55)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.card{
+ padding:27px;border:1px solid var(--line);background:var(--card);
+ min-height:190px;position:relative;overflow:hidden;transition:.35s;
+}
+.card:before{
+ content:"";position:absolute;top:0;left:-100%;width:70%;height:1px;
+ background:linear-gradient(90deg,transparent,var(--mint),transparent);
+ transition:.6s;
+}
+.card:hover{transform:translateY(-7px);border-color:rgba(101,246,189,.35);box-shadow:var(--shadow)}
+.card:hover:before{left:120%}
+.card-no{color:var(--mint);font:11px "JetBrains Mono"}
+.card h3{margin:15px 0 8px;font-size:18px}
+.card p{color:var(--muted);font-size:13px}
+.tools{margin-top:50px}
+.tools-title{color:var(--muted);font:11px "JetBrains Mono";margin-bottom:15px}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag{padding:8px 11px;border:1px solid var(--line);background:rgba(255,255,255,.015);font:10px "JetBrains Mono";color:#adc0b9;transition:.2s}
+.tag:hover{color:var(--mint);border-color:rgba(101,246,189,.3)}
+
+.project{
+ display:grid;grid-template-columns:70px 1fr;gap:25px;padding:30px;
+ border:1px solid var(--line);background:var(--card);margin-bottom:12px;transition:.3s
+}
+.project:hover{border-color:rgba(101,246,189,.32);transform:translateX(5px)}
+.project-no{font:700 22px "JetBrains Mono";color:var(--mint)}
+.project-type{font:10px "JetBrains Mono";letter-spacing:2px;color:var(--cyan)}
+.project h3{font-size:23px;margin:7px 0}
+.project p{color:var(--muted);max-width:850px;font-size:14px}
+.project ul{display:flex;flex-wrap:wrap;gap:8px 24px;list-style:none;margin:16px 0;color:#bdccc6;font-size:12px}
+.project li:before{content:"→ ";color:var(--mint)}
+.project small{font:10px "JetBrains Mono";color:var(--mint)}
+
+.workflow{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line)}
+.step{background:var(--bg2);padding:27px;min-height:155px}
+.step strong{font:11px "JetBrains Mono";color:var(--mint)}
+.step h3{margin:14px 0 6px;font-size:16px}.step p{color:var(--muted);font-size:12px}
+.ethics{margin-top:20px;padding:19px;border:1px solid rgba(101,246,189,.18);background:rgba(101,246,189,.035)}
+.ethics strong{color:var(--mint);font:10px "JetBrains Mono"}.ethics p{color:var(--muted);font-size:12px;margin-top:5px}
+
+.service-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.service{padding:17px 19px;border:1px solid var(--line);background:var(--card);font-size:13px}
+.service:before{content:"◈";color:var(--mint);margin-right:12px}
+
+.contact{
+ text-align:center;padding:125px 0;
+ background:radial-gradient(circle at 50% 0,rgba(101,246,189,.10),transparent 38%);
+}
+.contact p{color:var(--muted);max-width:620px;margin:auto;font-size:15px}
+.contact-links{display:flex;justify-content:center;gap:10px;margin-top:28px}
+.contact-links a{padding:11px 20px;border:1px solid var(--line);font:10px "JetBrains Mono";transition:.25s}
+.contact-links a:hover{color:var(--mint);border-color:var(--mint)}
+
+footer{padding:25px 0;border-top:1px solid var(--line);color:#60756e;font:9px "JetBrains Mono";display:flex;justify-content:space-between;letter-spacing:1px}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .75s ease,transform .75s ease}
+.reveal.show{opacity:1;transform:none}
+
+@media(max-width:850px){
+ .navlinks,.status{display:none}.hero-grid,.about-grid{grid-template-columns:1fr}
+ .profile-orb{width:250px;height:250px;margin-top:55px}
+ .cards,.workflow{grid-template-columns:1fr}
+ .service-grid{grid-template-columns:1fr}
+ .hero{padding-top:125px}.hero-grid{gap:10px}
+}
+@media(max-width:600px){
+ .container{width:90%}section{padding:80px 0}
+ h1{letter-spacing:-3px}.actions{flex-direction:column}.btn{text-align:center}
+ .project{grid-template-columns:1fr}.project-no{margin-bottom:-10px}
+ footer{flex-direction:column;gap:8px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+ <div class="container" style="display:flex;width:88%;align-items:center;justify-content:space-between">
+  <a class="logo" href="#home">&lt;<span>OK</span> / CYBERSEC&gt;</a>
+  <div class="navlinks">
+   <a href="#about">ABOUT</a><a href="#skills">SKILLS</a><a href="#projects">PROJECTS</a><a href="#methodology">METHODOLOGY</a><a href="#contact">CONTACT</a>
+  </div>
+  <div class="status"><i></i>SECURE MODE</div>
+ </div>
+</nav>
+
+<main>
+<section class="hero" id="home">
+ <div class="container hero-grid">
+  <div>
+   <div class="eyebrow">ETHICAL HACKER • CYBERSECURITY</div>
+   <h1>Oishorzaw<br><em>Khandakar</em></h1>
+   <p class="hero-desc">Ethical Hacker focused on vulnerability assessment, penetration testing, network security and security research — with a strong commitment to responsible and authorized security testing.</p>
+   <div class="actions">
+    <a class="btn primary" href="#projects">EXPLORE MY WORK →</a>
+    <a class="btn secondary" href="#contact">LET'S CONNECT</a>
+   </div>
+   <div class="hero-note">AUTHORIZED TESTING ONLY • RESPONSIBLE DISCLOSURE • SECURITY FIRST</div>
+   <div class="terminal">
+    <div class="term-top"><i></i><i></i><i></i><span class="term-title">oishorzaw@cybersec:~</span></div>
+    <div class="term-body">
+     <div>$ <span class="green">whoami</span></div>
+     <div class="green">oishorzaw-khandakar / ethical-hacker</div>
+     <div>$ <span class="green">mission</span></div>
+     <div class="muted">identify → analyze → report → remediate<span class="cursor">&nbsp;</span></div>
+    </div>
+   </div>
+  </div>
+  <div class="profile-orb">
+   <div class="ring r1"></div><div class="ring r2"></div><div class="ring r3"></div>
+   <div class="orb-core">OK</div>
+   <div class="orb-dot d1"></div><div class="orb-dot d2"></div><div class="orb-dot d3"></div>
+  </div>
+ </div>
+</section>
+
+<section id="about">
+ <div class="container">
+  <div class="section-label">01 / ABOUT ME</div>
+  <div class="about-grid reveal">
+   <div><h2>Security is not just about finding a flaw.<br><span>It's about fixing it.</span></h2></div>
+   <div class="about-text">
+    <p class="highlight">I’m <strong>Oishorzaw Khandakar</strong>, an Ethical Hacker and cybersecurity enthusiast focused on understanding how systems can be attacked — and how they can be better protected.</p>
+    <p>I work with security testing concepts including reconnaissance, vulnerability assessment, network analysis, web application security and Linux security.</p>
+    <p>My approach emphasizes <strong>authorized testing, responsible disclosure, clear evidence and practical remediation</strong>.</p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="skills-section" id="skills">
+ <div class="container">
+  <div class="section-label">02 / EXPERTISE</div>
+  <h2>Technical <span>Skills</span></h2>
+  <div class="cards reveal">
+   <article class="card"><span class="card-no">01</span><h3>Ethical Hacking</h3><p>Security reconnaissance, enumeration, vulnerability identification and controlled testing.</p></article>
+   <article class="card"><span class="card-no">02</span><h3>Web Application Security</h3><p>HTTP analysis, authentication testing, input validation and security assessment.</p></article>
+   <article class="card"><span class="card-no">03</span><h3>Network Security</h3><p>Network discovery, service analysis, packet inspection and attack-surface review.</p></article>
+   <article class="card"><span class="card-no">04</span><h3>Linux Security</h3><p>Permissions, services, firewall configuration, logs and system hardening.</p></article>
+   <article class="card"><span class="card-no">05</span><h3>OSINT & Research</h3><p>Public-source information gathering, reconnaissance and structured security research.</p></article>
+   <article class="card"><span class="card-no">06</span><h3>Security Reporting</h3><p>Clear findings, evidence, risk context and actionable remediation recommendations.</p></article>
+  </div>
+  <div class="tools reveal">
+   <div class="tools-title">TOOLS & TECHNOLOGIES</div>
+   <div class="tags">
+    <span class="tag">Nmap</span><span class="tag">Burp Suite</span><span class="tag">Metasploit</span><span class="tag">Wireshark</span><span class="tag">Nikto</span><span class="tag">Gobuster</span><span class="tag">Kali Linux</span><span class="tag">Linux</span><span class="tag">TCP/IP</span><span class="tag">DNS</span><span class="tag">HTTP/HTTPS</span><span class="tag">Python</span><span class="tag">Bash</span><span class="tag">Git/GitHub</span><span class="tag">UFW</span>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="projects">
+ <div class="container">
+  <div class="section-label">03 / FEATURED WORK</div>
+  <h2>Cybersecurity <span>Projects</span></h2>
+
+  <article class="project reveal"><div class="project-no">01</div><div><div class="project-type">NETWORK SECURITY</div><h3>Network Security Assessment</h3><p>Assessment of an authorized test network to identify exposed services, potential vulnerabilities and unnecessary attack surface.</p><ul><li>Reconnaissance</li><li>Port & service discovery</li><li>Enumeration</li><li>Risk analysis</li></ul><small>Nmap · Wireshark · Kali Linux</small></div></article>
+
+  <article class="project reveal"><div class="project-no">02</div><div><div class="project-type">WEB APPLICATION SECURITY</div><h3>Web Application Security Assessment</h3><p>Security evaluation of a deliberately vulnerable application in a controlled laboratory environment.</p><ul><li>HTTP analysis</li><li>Authentication testing</li><li>Input validation</li><li>Evidence collection</li></ul><small>Burp Suite · Kali Linux · OWASP</small></div></article>
+
+  <article class="project reveal"><div class="project-no">03</div><div><div class="project-type">LINUX SECURITY</div><h3>Linux Security & Hardening</h3><p>Review of Linux configuration and development of practical hardening recommendations to reduce exposure.</p><ul><li>Permissions review</li><li>Service analysis</li><li>Firewall configuration</li><li>Log analysis</li></ul><small>Linux · Bash · UFW</small></div></article>
+
+  <article class="project reveal"><div class="project-no">04</div><div><div class="project-type">TRAFFIC ANALYSIS</div><h3>Network Traffic Analysis</h3><p>Analysis of authorized lab traffic to understand communication patterns and identify unusual network activity.</p><ul><li>Packet capture</li><li>Protocol analysis</li><li>DNS analysis</li><li>Traffic inspection</li></ul><small>Wireshark · TCP/IP</small></div></article>
+ </div>
+</section>
+
+<section class="skills-section" id="methodology">
+ <div class="container">
+  <div class="section-label">04 / METHODOLOGY</div>
+  <h2>My Security <span>Workflow</span></h2>
+  <div class="workflow reveal">
+   <div class="step"><strong>01</strong><h3>Reconnaissance</h3><p>Gather information within the approved scope.</p></div>
+   <div class="step"><strong>02</strong><h3>Scanning</h3><p>Identify hosts, ports, services and technologies.</p></div>
+   <div class="step"><strong>03</strong><h3>Enumeration</h3><p>Analyze discovered services and potential entry points.</p></div>
+   <div class="step"><strong>04</strong><h3>Assessment</h3><p>Identify and validate security weaknesses.</p></div>
+   <div class="step"><strong>05</strong><h3>Risk Analysis</h3><p>Assess potential impact and severity.</p></div>
+   <div class="step"><strong>06</strong><h3>Reporting</h3><p>Document evidence and remediation guidance.</p></div>
+  </div>
+  <div class="ethics reveal"><strong>⚠ ETHICAL & AUTHORIZED TESTING</strong><p>Security testing should only be performed with explicit authorization and within a clearly defined scope.</p></div>
+ </div>
+</section>
+
+<section>
+ <div class="container">
+  <div class="section-label">05 / SERVICES</div>
+  <h2>What I Can <span>Help With</span></h2>
+  <div class="service-grid reveal">
+   <div class="service">Vulnerability Assessments</div><div class="service">Network Security Assessments</div>
+   <div class="service">Web Security Testing</div><div class="service">Authorized Penetration Testing</div>
+   <div class="service">Security Reconnaissance</div><div class="service">OSINT Research</div>
+   <div class="service">Linux Security & Hardening</div><div class="service">Professional Security Reporting</div>
+  </div>
+ </div>
+</section>
+
+<section class="contact" id="contact">
+ <div class="container">
+  <div class="section-label">06 / CONTACT</div>
+  <h2>Let's make the digital world<br><span>more secure.</span></h2>
+  <p>Interested in cybersecurity, ethical hacking projects, research or collaboration? Let’s connect.</p>
+  <div class="contact-links">
+   <a href="mailto:your.email@example.com">EMAIL</a>
+   <a href="https://github.com/yourusername" target="_blank">GITHUB</a>
+   <a href="https://www.linkedin.com/in/yourusername/" target="_blank">LINKEDIN</a>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="container" style="display:flex;justify-content:space-between">
+  <span>© 2026 OISHORZAW KHANDAKAR</span><span>ETHICAL HACKER • CYBERSECURITY • RESPONSIBLE DISCLOSURE</span>
+ </div>
+</footer>
+
+<script>
+const reveal=document.querySelectorAll('.reveal');
+const observer=new IntersectionObserver((entries)=>{
+ entries.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('show');observer.unobserve(e.target);}
+ });
+},{threshold:.1});
+reveal.forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>
